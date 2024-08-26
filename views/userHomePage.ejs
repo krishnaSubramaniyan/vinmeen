@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>vinmeen</title>
+
+    <!-- fontawesome w3schools -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+
+    <!-- link css -->
+    <link rel="stylesheet" href="/css/homePage.css">
+
+    <!-- start styles -->
+    <style>
+      /* name change animation */
+      #name {
+	  font-family: "Madimi One", "Noto Sans Tamil", sans-serif;
+	  font-style: italic;
+	  font-size: 25px;
+	  font-weight: 400;
+
+	  color: transparent;
+	  animation: fadeName 15s linear infinite forwards;
+      }
+
+      @keyframes fadeName {
+	  0% {
+              color: transparent;
+	  }
+
+	  10% {
+              color: black;
+	  }
+
+	  88% {
+              color: black;
+	  }
+
+	  98% {
+              color: transparent;
+	  }
+      }
+      /*user action style*/
+      #user_logo {
+          display: inline-block;
+          background-color: #2f3542;
+          color: #f1f2f6;
+          width: 30px;
+          height: 30px;
+          border-radius: 25px;
+          text-align: center;
+          line-height: 28px;
+      }
+
+      #user_action.active {
+          opacity: 1;
+          z-index: 1;
+      }
+
+      #user_action {
+          width: 200px;
+          height: 200px;
+          border-radius: 20px 6px 20px 20px;
+          position: absolute;
+          right: 0;
+          margin-right: 25px;
+          display: block;
+          transition: opacity 0.5s ease;
+          z-index: -1;
+          opacity: 0;
+          box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+          background-color: #f5f6fa;
+      }
+
+      #user_action>ul {
+          list-style-type: none;
+      }
+
+      #user_action>ul>li>a {
+          display: inline-block;
+          width: 100%;
+          box-sizing: border-box;
+          text-decoration: none;
+          text-align: center;
+          padding: 18px 10px;
+          color: #2f3542;
+      }
+
+      #user_action>ul>li>a:hover {
+          color: #171e23;
+      }	
+    </style>
+    
+  </head>
+
+  <body>
+
+    <div class="container">
+
+      <!-- /header start -->
+      <div class="header">
+        <div class="logo">
+          <span id="logo"></span>
+          <span id="name">VINMEEN</span>
+        </div>
+
+        <form action="/search/" method="get">
+          <input type="text" name="search" id="search" pattern="^\S(.*\S)?$" required placeholder="search anything...">
+          <label for="search"><i class='fas fa-search'></i></label>
+        </form>
+
+        <nav>
+          <ul>
+	    <li><a href="#categories">Categories</a></li>
+            <li id="user_logo"><%=userFirstLetter%></li>
+          </ul>
+        </nav>
+      </div>
+      <!-- /header end -->
+
+      <!-- /user actions start -->
+      <div id="user_action" class="user_action">
+        <ul>
+          <li><a href="/addproduct/<%=id%>" onclick="hidemenu()">Add Product</a></li>
+          <li><a href="/listproduct/<%=id%>" onclick="hidemenu()">Edit Product</a></li>
+          <li><a href="/">Logout</a></li>
+        </ul>
+      </div>
+      <!-- /user action end -->
+      
+      <!-- /message box start -->
+      <div class="messageBox">
+        <div class="message">
+          <p>
+            Vinmeen <br>fulfills your temporary needs.
+          </p>
+        </div>
+        <div class="big_logo"></div>
+      </div>
+      <!-- /message box end -->
+
+      <!-- /count list start -->
+      <div class="user_product_count">
+        <div class="count_view">
+          happy users
+          <br>
+          <span>512+</span>
+        </div>
+
+        <div class="count_view">
+          products
+          <br>
+          <span>1000+</span>
+        </div>
+      </div>
+      <!-- /count list end -->
+
+      <!-- /categories start -->
+      <div class="categories" id="categories">
+        <h2>Categories</h2>
+        <div>
+          <div class="items">
+            <a id="image" href="/search/?search=tools+toolkit" style="background-image:url('/images/ToolKit.jpeg');"></a>
+            <span>ToolKits</span>
+          </div>
+          <div class="items">
+            <a id="image" href="/search/?search=gamming+palystation+ps+xbox+steamduck+gamecd+cd" style="background-image:url('/images/gammingConsole.jpg');"></a>
+            <span>Gaming Consoles</span>
+          </div>
+          <div class="items">
+            <a id="image" href="/search/?search=vr+headset+meta+quest+vision+pro+oculus" style="background-image:url('/images/VRHeadset.png');"></a>
+            <span>VR Headset</span>
+          </div>
+          <div class="items">
+            <a id="image" href="/search/?search=drone+dji" style="background-image:url('/images/Drones.jpg')"></a>
+            <span>Drones</span>
+          </div>
+          <div class="items">
+            <a id="image" href="/search/?search=camera+tripod+lense+lights+batteries" style="background-image:url('/images/Camera.jpg')"></a>
+            <span>Camera and Accessories</span>
+          </div>
+          <div class="items">
+            <a id="image" href="/search/?search=book" style="background-image:url('/images/books.jpeg')"></a>
+            <span>Books</span>
+          </div>
+        </div>
+      </div>
+      <!-- /categories end -->
+
+      <!-- /footer start -->
+      <div class="footer">
+        <div class="footer_items">
+          <ul>
+            <li><span id="action_wrapper"><a href="/login">login</a>/<a href="/signup">sign up</a></span></li>
+            <li><a href="#search">search</a></li>
+            <li><a href="/howitworks">how it works</a></li>
+            <br>
+            <li><a href="/termsofservice">terms of service</a></li>
+            <li><a href="/about">about</a></li>
+          </ul>
+        </div>
+        <div class="social_media_links">
+          <div>find as in social media</div>
+          <a href="#" class='fab fa-facebook'></a>
+          <a href="#" class="fab fa-instagram"></a>
+          <a href="#" class="fab fa-twitter"></a>
+          <a href="#"></a>
+          <!-- <a href="#" class="fa fa-envelope"></a> -->
+        </div>
+      </div>
+      <!-- /footer end -->
+    </div>
+
+    <!-- script start -->
+    <script>
+
+      //vinmeen name animation
+      const name = document.getElementById("name");
+      const nameList = ['VINMEEN', 'விண்மீன்'];
+      let pointer = 1;
+      const nameInterval = setInterval(() => {
+          name.innerHTML = nameList[pointer++];
+          if (pointer == 2) pointer = 0;
+
+	  //no focus remove search words
+	  const searchInput = document.getElementById("search");
+	  searchInput.parentNode.addEventListener("change",()=>{
+	      if(searchInput.focus == false) searchInput.value = "";
+	  });
+      }, 15000);
+
+      //async namechange
+      window.addEventListener('unload', ()=>{clearInterval(nameInterval)});
+      
+      
+      //user_action add active class
+      function hidemenu(){
+	  document.getElementById("user_action").classList.remove("active");
+      }
+      const logo = document.getElementById("user_logo");
+      const actions = document.getElementById("user_action");
+
+      logo.addEventListener("click", () => {
+          actions.classList.toggle("active");
+      });
+      //scroll page hide user_action window
+      window.addEventListener("scroll", () => actions.classList.remove("active"));
+      
+    </script>
+    <!-- script end -->
+  </body>
+
+</html>

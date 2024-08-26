@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>add product</title>
+
+    <!-- link css -->
+    <link rel="stylesheet" href="/css/addProduct.css">
+</head>
+
+<body>
+    <div class="container">
+
+        <div class="heading">
+            <h1>Add Product</h1>
+        </div>
+
+        <form action="/addproduct/data" method="post" autocomplete="false" enctype="multipart/form-data">
+
+            <div class="field">
+                <label for="productName">Product name</label>
+                <input type="text" name="productName" id="productName" required>
+            </div>
+
+            <div class="field">
+                <label for="description">Description</label>
+                <textarea name="productDescription" id="description" cols="33" rows="2" required></textarea>
+            </div>
+
+            <div class="field">
+                <label for="location">Location</label>
+                <input type="text" name="productLocation" id="location" required>
+            </div>
+
+            <div class="field">
+                <label for="price">Rental Price</label>
+                <input type="text" name="productPrice" id="price" pattern="^[0-9]*" size="4" required>
+                <span>/per day</span>
+            </div>
+
+            <div class="field">
+                <label for="Image">Image</label>
+                <input type="file" name="productImage" id="Image" required>
+            </div>
+
+            <input type="submit" value="Add Product">
+        </form>
+    </div>
+
+
+    <script>
+
+        function presentData() {
+            let result = false;
+            const inputs = document.getElementsByTagName("input");
+
+            for (let i = 0; i < 4; i++) {
+                if (inputs[i].value == "") {
+                    result = true;
+                    break;
+                }
+            }
+            if (document.getElementById("description").value == "") {
+                result = true;
+            }
+
+            return result;
+        }
+
+        const form = document.getElementsByTagName("form")[0];
+        const submit = document.getElementsByTagName("input")[4];
+        submit.disabled = true;
+        form.addEventListener("change", (e) => {
+            submit.disabled = presentData();
+        })
+    </script>
+</body>
+
+</html>

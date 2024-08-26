@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up</title>
+
+    <!-- link files -->
+    <link rel="stylesheet" type="text/css" href="/css/signUp.css">
+
+</head>
+
+<body>
+    <div class="container">
+
+        <div class="formWrapper">
+            <div class="heading">
+                <h1>Sign Up</h1>
+                <p>Please fill in this form to create an account</p>
+            </div>
+
+            <hr>
+
+            <form action="" method="post" autocomplete="false">
+                <div class="field">
+                    <input type="text" name="username" id="User name" placeholder="User name" required
+                        value="<%= username %>">
+                    <span>!</span>
+                </div>
+
+                <div class="field">
+                    <input type="email" name="email" id="email" placeholder="Email" required>
+                    <span><%= email %></span>
+                </div>
+
+                <div class="field">
+                    <input type="password" name="password" id="password" placeholder="Password" minlength="8"
+                        maxlength="20" required value="<%= password %>">
+                    <span>!</span>
+                </div>
+
+                <div class="field">
+                    <input type="password" name="confirmPassword" id="confirmPasseword" placeholder="Confirm password"
+                        required value="<%= password %>">
+                    <span id="confirmPasswordSpane">!</span>
+                </div>
+                <div class="showPasswordWrapper">
+                    <input type="checkbox" id="showPassword">
+                    <label for="showPassword">show password</label>
+                </div>
+                <br>
+                <input type="submit" value="Sign Up">
+
+            </form>
+        </div>
+
+        <div class="loginMessage">
+            <p>Already have an account?
+                <a href="#" target="_self">Login here</a>.
+            </p>
+        </div>
+    </div>
+
+    <!-- javascript link file -->
+    <script>
+
+
+      const input = document.getElementsByTagName("input");
+      const span = document.getElementsByTagName("span");
+
+      const form = document.getElementsByTagName("form")[0];
+      form.addEventListener("submit", (e) => {
+
+	  if (!validator()) {
+              e.preventDefault();
+	  }
+      });
+
+      function errorMessage(element, message) {
+	  element.innerText = message;
+      }
+
+      function validator() {
+
+	  let result = true;
+
+	  //name validation
+	  const nameRegex = /^[a-zA-Z_ ]{1,20}$/;
+	  const name = input[0];
+
+	  if (name.value.trim() == "") {
+              errorMessage(span[0], "enter valid name not space!");
+              name.classList.add("error");
+              result = false;
+	  }
+	  else if (nameRegex.test(name.value.trim())) {
+              name.classList.remove("error");
+              errorMessage(span[0], "!");
+	  }
+	  else {
+              errorMessage(span[0], "enter valid name");
+              name.classList.add("error");
+              result = false;
+	  }
+
+
+	  //email validation
+	  const emailRegex = /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
+	  const email = input[1];
+
+	  if (emailRegex.test(email.value.trim())) {
+              email.classList.remove("error");
+              errorMessage(span[1], "!");
+	  }
+	  else {
+              email.classList.add("error");
+              errorMessage(span[1], "email format is not correct!");
+              result = false;
+	  }
+
+
+	  //password validation
+	  const passwordRegex = /(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*()+=-\?;,./{}|\":<>\[\]\\\' ~_]).{8,}/;
+	  const password = input[2];
+
+	  if (password.value.trim() === "") {
+              span[2].classList.add("error");
+              errorMessage(span[2], "please enter password no space!");
+              result = false;
+	  }
+	  else if (passwordRegex.test(password.value.trim())) {
+              password.classList.remove("error");
+              errorMessage(span[2], "!");
+	  }
+	  else {
+              password.classList.add("error");
+              errorMessage(span[2], "password is not correct format");
+              result = false;
+	  }
+
+
+	  //match confirm password
+	  const confirmPassword = input[3];
+	  if (password.value == confirmPassword.value) {
+              confirmPassword.classList.remove("error");
+              errorMessage(span[3], "!");
+	  }
+	  else {
+              confirmPassword.classList.add("error");
+              errorMessage(span[3], "confirm password is not matched!");
+              result = false;
+	  }
+
+
+	  return result;
+      }
+
+
+      //show password
+      input[4].addEventListener("click", () => {
+	  if (input[4].checked) {
+              [input[2].type, input[3].type] = ["text", "text"];
+	  }
+	  else {
+              [input[2].type, input[3].type] = ["password", "password"];
+	  }
+      });
+
+      //email exists style add
+      if (span[1].innerHTML == "email id already exists") {
+	  input[1].classList.add("error");
+      }
+
+    </script>
+
+</body>
+
+</html>

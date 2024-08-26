@@ -1,0 +1,69 @@
+/*poppins*/
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+
+* {
+    padding: 0;
+    margin: 0;
+}
+
+body {
+    font-family: "Poppins", sans-serif;
+    width: 100vw;
+    min-height: 100%;
+    background-color: #f1f2f6;
+    color: #2f3542;
+}
+
+.container {
+    box-sizing: border-box;
+}
+
+.items {
+    width: 100vw;
+    padding: 20px;
+    box-sizing: border-box;
+    border-bottom: 1px solid #a4b0be;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.image {
+    /*            background-image: url("../../temp/quest\ 3\ 2.jpg");*/
+    background-position: center;
+    background-size: cover;
+    width: 290px;
+    height: 160px;
+    border-radius: 10px;
+}
+
+.details {
+    padding: 17px 17px 17px 30px;
+    cursor: default;
+}
+
+.details>h2 {
+    padding: 0 0 20px;
+    font-weight: 600;
+}
+
+.details>.description {
+    font-family: inherit;
+    width: 400px;
+    font-size: 17px;
+}
+
+.details>a {
+    display: inline-block;
+    margin-top: 18px;
+    background-color: #2f3542;
+    color: #f1f2f6;
+    text-decoration: none;
+    padding: 5px 16px;
+    border-radius: 22px;
+}
+
+.details>a:active,
+.details>a:visited {
+    color: #f1f2f6;
+}

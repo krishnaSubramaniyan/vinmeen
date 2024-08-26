@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+      <%=product.product_name%>
+    </title>
+    
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        body {
+            width: 100vw;
+            height: 100vh;
+            font-family: "Poppins", sans-serif;
+            position: relative;
+        }
+
+        .container {
+	    box-sizing: border-box;
+            width: 800px;
+            padding: 20px;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            display: flex;
+            justify-content: space-between;
+	    flex-wrap: wrap;
+        }
+
+        .image {
+	    box-sizing: border-box;
+            flex-basis: 500px;
+            height: 400px;
+	    margin-left: 10px;
+            flex-shrink: 0;
+            border-radius: 35px;
+            background-image: url("<%=product.image_path%>");
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center;
+        }
+
+        .details {
+	    flex-grow: 1;
+	    flex-shrink: 10;
+	    width:250px;
+	    box-sizing: border-box;
+            font-size: 1rem;
+            padding: 10px;
+            padding-left: 25px;
+            color: #222f3e;
+	    display: flex;
+	    flex-direction:column;
+	    justify-content: space-between;
+        }
+
+        .details>* {
+            margin-bottom: 20px;
+        }
+
+        .field>h4 {
+            font-size: 20px;
+            color: #4a5469;
+        }
+
+        .field>p{
+            margin-top: 4px;
+            font-size: 18px;
+        }
+
+	.field>pre {
+	    line-height: 25px;
+	    font-family: inherit;
+            margin-top: 4px;
+            font-size: 18px;
+        }
+
+        #name {
+            text-align: center;
+            text-transform: capitalize;
+            font-weight: bold;
+            opacity: 0.9;
+            font-size: 32px;
+            color: #1a2430;
+        }
+
+        .details>a {
+	    width:max-content;
+            display: block;
+	    text-align:center;
+	    text-decoration:none;
+            margin:0 auto;
+            padding: 14px 24px;
+            border-radius: 25px;
+            background-color: #5352ed;
+            color: #f1f2f6;
+            font-weight: bold;
+        }
+
+        .details>a:active {
+            transform: scaleX(1.01);
+        }
+
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="image" title="<%=product.product_name%>"></div>
+        <div class="details">
+
+            <h3 id="name"><%=product.product_name%></h3>
+
+            <div class="field">
+                <h4>description</h4>
+                <pre id="description"><%=product.description%></pre>
+            </div>
+
+            <div class="field">
+                <h4>location</h4>
+                <p id="location">
+                    <%=product.location%>
+                </p>
+            </div>
+
+            <div class="field">
+                <h4>Rental Price</h4>
+                <p id="price">
+                    &#8377;<span><%=product.price%></span> /per day
+                </p>
+            </div>
+
+            <a href="/sendrequest/<%=product.product_id%>" id="requestButton">send request</a>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>otp verification</title>
+</head>
+
+<style>
+    * {
+        padding: 0;
+        margin: 0;
+    }
+
+    body {
+        height: 100vh;
+        width: 100vw;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-family: sans-serif;
+        background-color: #2f3542;
+
+    }
+
+    .container {
+        padding: 56px 20px;
+        text-align: center;
+        border-radius: 35px;
+        background-color: white;
+        opacity: 0.9;
+    }
+
+
+    .heading>h1 {
+        font-weight: normal;
+        margin-bottom: 8px;
+    }
+
+    .heading>p {
+        letter-spacing: 7px;
+    }
+
+    #otp {
+        border: none;
+        outline: none;
+        padding: 10px 10px 2px;
+        margin-top: 20px;
+        font-family: monospace;
+        font-size: 25px;
+        letter-spacing: 7px;
+        text-align: center;
+    }
+
+    #otp::placeholder {
+        text-align: center;
+        color: #2f3542;
+    }
+
+    form>div {
+        width: 0px;
+        height: 2px;
+        background-color: #2f3542;
+        margin: 0 auto;
+        animation: borderSpan 1.5s ease forwards 1s;
+    }
+
+    @keyframes borderSpan {
+        0% {
+            width: 0px;
+        }
+
+        100% {
+            width: 152px;
+        }
+    }
+
+    #otp:valid+div {
+        background-color: #2ed573;
+    }
+
+    input[type="submit"],
+    input[type="submit"]:hover {
+        padding: 11px 23px;
+        background-color: black;
+        color: white;
+        border: none;
+        border-radius: 20px;
+    }
+
+    #message{
+	text-align:center;
+	color:red;
+	font-size:18px;
+	margin-top: 10px;
+    }
+</style>
+
+
+<body>
+    <div class="container">
+        <div class="heading">
+            <h1>Verify</h1>
+            <p>Your otp was sent to you via email</p>
+        </div>
+        <form action="<%=handlePath%>" method="post" autocomplete="false">
+            <input type="text" name="otp" placeholder="OTP" size="6" id="otp" maxlength="6" pattern="[0-9]{6}" autocomplete="false" required>
+            <div></div>
+            <br>
+            <input type="submit" value="Verify">
+        </form>
+	<p id="message">
+	  <%=message%>
+	</p>
+    </div>
+</body>
+
+</html>

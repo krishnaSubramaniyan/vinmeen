@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Products</title>
+    <!-- link css -->
+    <link rel="stylesheet" href="/css/listProduct.css">
+</head>
+
+<body>
+  <div class="container">
+
+    <%for(let i=0; i<listProduct.length; i++){%>
+        <div class="items">
+            <span style="background-image:url('<%=listProduct[i].image_path%>')" class="image"></span>
+            <div class="details">
+                <h2><%=listProduct[i].product_name%></h2>
+                <div class="buttons">
+                    <a href="/listproduct/editproduct/<%=listProduct[i].product_id%>">Edit</a>
+                    <a class="deleteButton" data-product-id="<%=listProduct[i].product_id%>">Delete</a>
+                </div>
+            </div>
+        </div>
+     <%}%>
+
+    </div>
+</body>
+
+<script>
+
+  const deleteButtons = document.getElementsByClassName("deleteButton");
+
+  for(let i=0; i<deleteButtons.length; i++){
+      deleteButtons[i].addEventListener("click",()=>{
+	  const action = confirm("Are you sure you want to delete this product?");
+	  if(action){
+	      const id = deleteButtons[i].getAttribute("data-product-id");
+	      window.location.href = `/listproduct/delete/${id}`;
+	  }
+      });
+  }
+</script>
+
+</html>

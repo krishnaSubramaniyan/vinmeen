@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Authenticate First</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        body {
+            width: 100vw;
+            height: 100vh;
+            font-family: sans-serif;
+            color: #2f3542;
+            background-color: #f1f2f6;
+        }
+
+        .container {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        h1 {
+            font-weight: normal;
+            font-size: 28px;
+            word-spacing: 5px;
+        }
+
+        .buttons {
+            margin-top: 30px;
+        }
+
+        .buttons>a {
+            text-decoration: none;
+            color: #dfe4ea;
+            font-weight: bold;
+            padding: 10px 15px;
+            border-radius: 25px;
+        }
+
+        a:first-child {
+            background-color: #2ed573;
+            margin-right: 20px;
+        }
+
+        a:first-child:hover {
+            background-color: #45e387;
+        }
+
+        a:last-child {
+            background-color: #3742fa;
+        }
+
+        a:last-child:hover {
+            background-color: #5352ed;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Sorry, user authentication is a must</h1>
+        <div class="buttons">
+            <a href="/login">Login</a>
+            <a href="/signup">SignUp</a>
+        </div>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,110 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+
+body {
+    font-family: "Poppins", sans-serif;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.heading>h1 {
+    font-weight: normal;
+    text-align: center;
+    margin: 10px 0 60px;
+}
+
+.container {
+    font-size: 1.4rem;
+    color: #2f3542;
+}
+
+.field {
+    margin-bottom: 20px;
+}
+
+label {
+    display: inline-block;
+    width: 156px;
+    margin-right: 14px;
+}
+
+.field>input,
+textarea {
+    color: #747d8c;
+    font-size: 1.3rem;
+    padding: 10px;
+    outline: none;
+    border: 1px solid #ced6e0;
+    border-radius: 5px;
+}
+
+.field>input:focus,
+textarea:focus,
+#price:focus+span {
+    color: #2f3542;
+    border-color: #a4b0be;
+}
+
+.field:nth-child(2) {
+    display: flex;
+}
+
+.field:nth-child(2)>label {
+    margin-right: 21px;
+}
+
+#price {
+    padding-right: 0;
+}
+
+#price+span {
+    color: #747d8c;
+}
+
+#Image {
+    border: none;
+    padding-left: 0;
+    width: 309px;
+}
+
+#Image::file-selector-button {
+    outline: none;
+    border: none;
+    cursor: pointer;
+    color: #f1f2f6;
+    background-color: #5352ed;
+    padding: 8px 10px;
+    border-radius: 8px;
+}
+
+#Image::file-selector-button:hover {
+    background-color: #3742fa;
+}
+
+
+input[type="submit"] {
+    font-size: 1.3rem;
+    display: block;
+    margin: 2rem auto 0;
+    padding: 10px 25px;
+    border: none;
+    outline: none;
+    border-radius: 5px;
+    background-color: #2f3542;
+    color: #ced6e0;
+    transition: background-color 1s ease;
+}
+
+input[type="submit"]:disabled {
+    cursor: not-allowed;
+}
+
+input[type="submit"]:enabled {
+    background-color: #2ed573;
+    color: #f1f2f6;
+}

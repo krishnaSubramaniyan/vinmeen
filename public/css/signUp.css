@@ -1,0 +1,106 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+:root {
+    --body-background: #3598dc;
+    --body-color: white;
+    --form-background: white;
+    --form-color: rgb(117, 114, 114);
+    --input-background: #f2f2f2;
+    --error-message: #ef5777;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: "Poppins", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    width: 100vw;
+    height: 100vh;
+    background-color: var(--body-background);
+    color: var(--body-color);
+}
+
+.formWrapper {
+    background-color: var(--form-background);
+    color: var(--form-color);
+    border-radius: 4px;
+}
+
+.heading,
+form {
+    padding: 28px 38px;
+}
+
+.heading>h1 {
+    color: black;
+}
+
+hr {
+    opacity: 0.2;
+}
+
+
+.field>input {
+    display: block;
+    box-sizing: border-box;
+    padding: 10px;
+    width: 100%;
+    height: 48px;
+    border: none;
+    outline: none;
+    background-color: #f2f2f2;
+    border-radius: 3px;
+    border: 1px solid transparent;
+    font-size: 16px;
+}
+
+.field>span {
+    color: var(--error-message);
+    display: block;
+    font-size: 14px;
+    padding: 1px 10px 8px;
+    visibility: hidden;
+}
+
+.field .error {
+    border-color: var(--error-message);
+}
+
+.error+span {
+    visibility: visible;
+}
+
+#confirmPasswordSpan {
+    padding-bottom: 2px;
+}
+
+input[type="submit"] {
+    background-color: var(--body-background);
+    color: var(--body-color);
+    font-size: 16px;
+    font-weight: bold;
+    padding: 12px 36px;
+    border-radius: 4px;
+    border: none;
+    margin-top: 8px;
+}
+
+.loginMessage {
+    margin-top: 10px;
+}
+
+.loginMessage>p {
+    text-align: center;
+    font-size: 14px;
+}
+
+.loginMessage>p>a {
+    color: var(--body-color);
+}
