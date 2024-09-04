@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "browsersync" : "browser-sync start --server --directory --port 8080 --files 'temp/index.html, public/css/*.css, !node_modules/**/*' --browser 'firefox'"
   },
   "repository": {
     "type": "git",
@@ -27,5 +27,8 @@
     "mysql": "^2.18.1",
     "nodemailer": "^6.9.14",
     "sync-sql": "^1.0.2"
+  },
+  "devDependencies": {
+    "browser-sync": "^3.0.2"
   }
 }
