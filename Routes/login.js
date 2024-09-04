@@ -20,7 +20,8 @@ const pool = mysql.createPool({
     host     : process.env.HOSTNAME,
     user     : process.env.USERNAME,
     password : process.env.PASSWORD,
-    database : process.env.DATABASE_NAME
+    database : process.env.DATABASE_NAME,
+    port     : process.env.DATABASE_PORT
 });
 
 //login slash route

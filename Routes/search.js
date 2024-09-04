@@ -9,7 +9,8 @@ const pool = mysql.createPool({
     host     : process.env.HOSTNAME,
     user     : process.env.USERNAME,
     password : process.env.PASSWORD,
-    database : process.env.DATABASE_NAME
+    database : process.env.DATABASE_NAME,
+    port     : process.env.DATABASE_PORT
 });
 
 
@@ -49,7 +50,8 @@ Route.get('/', (req, res)=>{
 				host     : process.env.HOSTNAME,
 				user     : process.env.USERNAME,
 				password : process.env.PASSWORD,
-				database : process.env.DATABASE_NAME
+				database : process.env.DATABASE_NAME,
+				port     : process.env.DATABASE_PORT
 			    },"select * from products where product_name like ?", ["%"+split[i]+"%"]);
 			    productList.push(...result.data.rows);
 			}
