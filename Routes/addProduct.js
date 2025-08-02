@@ -18,11 +18,11 @@ Route.get('/:id', (req, res)=>{
 
 //mysql createpool
 const pool = mysql.createPool({
-    host     : process.env.HOSTNAME,
-    user     : process.env.USERNAME,
-    password : process.env.PASSWORD,
-    database : process.env.DATABASE_NAME,
-    port     : process.env.DATABASE_PORT
+    host     : process.env.DB_HOSTNAME,
+    user     : process.env.DB_USERNAME,
+    password : process.env.DB_PASSWORD,
+    database : process.env.DB_NAME,
+    port     : process.env.DB_PORT
 });
 
 

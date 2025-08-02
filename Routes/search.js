@@ -6,11 +6,11 @@ const syncsql = require("sync-sql");
 
 //pool
 const pool = mysql.createPool({
-    host     : process.env.HOSTNAME,
-    user     : process.env.USERNAME,
-    password : process.env.PASSWORD,
-    database : process.env.DATABASE_NAME,
-    port     : process.env.DATABASE_PORT
+    host     : process.env.DB_HOSTNAME,
+    user     : process.env.DB_USERNAME,
+    password : process.env.DB_PASSWORD,
+    database : process.env.DB_NAME,
+    port     : process.env.DB_PORT
 });
 
 
@@ -47,11 +47,11 @@ Route.get('/', (req, res)=>{
 			var products = [];
 			for(let i=0; i<split.length; i++){
 			    const result = syncsql.mysql({
-				host     : process.env.HOSTNAME,
-				user     : process.env.USERNAME,
-				password : process.env.PASSWORD,
-				database : process.env.DATABASE_NAME,
-				port     : process.env.DATABASE_PORT
+				host     : process.env.DB_HOSTNAME,
+				user     : process.env.DB_USERNAME,
+				password : process.env.DB_PASSWORD,
+				database : process.env.DB_NAME,
+				port     : process.env.DB_PORT
 			    },"select * from products where product_name like ?", ["%"+split[i]+"%"]);
 			    productList.push(...result.data.rows);
 			}

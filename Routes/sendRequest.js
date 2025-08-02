@@ -9,11 +9,11 @@ const signUp     = require("./signUp.js");
 
 //pool
 const pool = mysql.createPool({
-    host     : process.env.HOSTNAME,
-    user     : process.env.USERNAME,
-    password : process.env.PASSWORD,
-    database : process.env.DATABASE_NAME,
-    port     : process.env.DATABASE_PORT
+    host     : process.env.DB_HOSTNAME,
+    user     : process.env.DB_USERNAME,
+    password : process.env.DB_PASSWORD,
+    database : process.env.DB_NAME,
+    port     : process.env.DB_PORT
 });
 
 //userData
@@ -49,7 +49,7 @@ Route.get("/:productId",(req, res)=>{
 
 				//setup nodemailer
 				const transporter = nodeMailer.createTransport({
-				    service: process.env.SERVICE_PROVIDER,
+				    service: process.env.EMAIL_SERVICE_PROVIDER,
 				    auth: {
 					user: process.env.EMAIL_ID,
 					pass: process.env.EMAIL_PASSWORD
@@ -57,14 +57,14 @@ Route.get("/:productId",(req, res)=>{
 				});
 
 				const mailOption = {
-				    from    : "vinminservice@gmail.com",
+				    from    : process.env.EMAIL_ID,
 				    to      : result1[0].email,
 				    subject : "request to rent prodect",
 				    html    : `<div style="font-family:sans-serif; width:600px; height:280px; background-color:#2c3e50; color:#ecf0f1; padding:20px; border-radius:10px;">
         <div style="display:flex; align-items:center; padding:7px;">
-            <img src="https://static.vecteezy.com/system/resources/previews/014/835/004/non_2x/star-icon-vector.jpg"
+            <img src="${process.env.BRAND_LOGO}"
                 style="width:40px; height:40px; border-radius:25px; object-fit:contain; background-color:#ecf0f1;">
-            <span style="font-size:22px; margin-left:11px">Vinmeen Service</span>
+            <span style="font-size:22px; margin-left:11px">${process.env.BRAND_NAME}</span>
         </div>
         <div>
             <h1 style="text-align:center; font-size:33px; font-weight:normal; letter-spacing:7px; margin:33px 0 35px;">
@@ -74,7 +74,7 @@ Route.get("/:productId",(req, res)=>{
                 <br>
                 Please response to <i>${userData.username}</i>
                 <br>
-                mail to <a href="mailto:${userData.email}?&bcc=vinminservice@gmail.com&subject=rent product response"
+                mail to <a href="mailto:${userData.email}?&bcc=${process.env.EMAIL_ID}&subject=rent product response"
                     style="text-decoration:none; color:#70a1ff;">${userData.username}</a>
             </p>
         </div>

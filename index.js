@@ -49,6 +49,11 @@ app.use('/sendrequest', sendRequest);
 //list product
 app.use('/listproduct', listProduct);
 
+//server ping
+app.get('/keep-up', (req,res)=>{
+    res.status(200)
+       .send("ok");
+})
 
 //listening port
 const port = process.env.PORT || 8080;

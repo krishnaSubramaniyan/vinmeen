@@ -17,11 +17,11 @@ message = {
 
 //mysql pool
 const pool = mysql.createPool({
-    host     : process.env.HOSTNAME,
-    user     : process.env.USERNAME,
-    password : process.env.PASSWORD,
-    database : process.env.DATABASE_NAME,
-    port     : process.env.DATABASE_PORT
+    host     : process.env.DB_HOSTNAME,
+    user     : process.env.DB_USERNAME,
+    password : process.env.DB_PASSWORD,
+    database : process.env.DB_NAME,
+    port     : process.env.DB_PORT
 });
 
 //login slash route
@@ -68,7 +68,7 @@ Route.post('/',(req,res)=>{
 
 			    //setup nodemailer
 			    const transporter = nodeMailer.createTransport({
-				service: process.env.SERVICE_PROVIDER,
+				service: process.env.EMAIL_SERVICE_PROVIDER,
 				auth: {
 				    user: process.env.EMAIL_ID,
 				    pass: process.env.EMAIL_PASSWORD
@@ -80,11 +80,11 @@ Route.post('/',(req,res)=>{
 			    Otp = otp;
 			    const mailOption = {
 
-				from: "vinminservice@gmail.com",
+				from: process.env.EMAIL_ID,
 				to: [Email],
-				subject: "vinmeen service",
+				subject: process.env.BRAND_NAME,
 				html: `<div style="font-family:sans-serif; font-size:20px; padding:15px; width:650px; margin:0 auto; border-radius:0 15px; background-color:black; color:white;">
-        <div style="font-style:italic; color:white; ">VINMEEN SERVICE</div>
+        <div style="font-style:italic; color:white; ">${process.env.BRAND_NAME}</div>
         <h1 style="text-align:center; font-weight:normal; color:white;">OTP Verification</h1>
         <p style="color:white; ">
             Hi ${result[0].user_name},
